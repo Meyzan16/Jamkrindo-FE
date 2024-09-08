@@ -9,7 +9,7 @@ const Carousel = () => {
         <br className="max-md:hidden" />
           <span className="orange_gradient text-center">
           {" "}
-            Report information systemt
+            Report information system
         </span>
       </h1>
       <p className="desc text-center leading-8">

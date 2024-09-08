@@ -74,7 +74,7 @@ export default function Home() {
     <>
       <Carousel />
 
-      <div className="w-full overflow-x-auto shadow-md sm:rounded-lg mt-4">
+      <div className="w-full overflow-x-auto shadow-md sm:rounded-lg mt-8">
         <table className="basic">
           <thead>
             <tr>
