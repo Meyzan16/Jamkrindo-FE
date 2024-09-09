@@ -50,15 +50,19 @@ export default function Home() {
             return acc;
           }, {} as Record<string, DataItem[]>);
 
-          // Membuat array hasil akhir
+
+          // Mapping count for hasil akhir 
           const finalData: (DataItem | CountItem)[] = [];
           for (const [lob, items] of Object.entries(groupedData)) {
             finalData.push(...items);
+            //mencari data count yang sama dengan nama lob, maka push
             const countItem = apiData.count.find(c => c.NameLob === lob);
             if (countItem) {
               finalData.push(countItem);
             }
           }
+
+          console.log('final data', finalData);
 
           setData(finalData); 
         }
@@ -88,7 +92,7 @@ export default function Home() {
 
           <tbody>
             {data.map((item, index) => (
-              <tr key={index} className={` ${'JumlahTerjamin' in item && !('PenyebabKlaim' in item) ? 'bg-primary text-white' : ''} `}>
+              <tr key={index} className={` ${!('PenyebabKlaim' in item) ? 'bg-primary text-white' : ''} `}>
                 <td className="font-medium whitespace-nowrap">
                   {index + 1}
                 </td>
@@ -99,10 +103,10 @@ export default function Home() {
                   {'PenyebabKlaim' in item ? item.PenyebabKlaim : ''}
                 </td>
                 <td className="font-medium whitespace-nowrap">
-                  {'JumlahTerjamin' in item ? item.JumlahTerjamin : ''}
+                  {item.JumlahTerjamin}
                 </td>
                 <td className="font-medium whitespace-nowrap">
-                  {'NilaiBebanKlaim' in item ? item.NilaiBebanKlaim : ''}
+                  {item.NilaiBebanKlaim}
                 </td>
               </tr>
             ))}
